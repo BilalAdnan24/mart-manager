@@ -1,0 +1,52 @@
+class Product:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+class Mart:
+    def __init__(self):
+        self.products = []
+
+    def add_product(self, product):
+        self.products.append(product)
+        print(f"{product.name} added to the mart.")
+
+    def remove_product(self, product_name):
+        for product in self.products:
+            if product.name == product_name:
+                self.products.remove(product)
+                print(f"{product_name} removed from the mart.")
+                return
+        print(f"{product_name} is not found in the mart.")
+
+    def view_products(self):
+        if not self.products:
+            print("No products available in the mart.")
+        else:
+            print("Products available in the mart:")
+            for product in self.products:
+                print(f"Name: {product.name}, Price: ${product.price}, Quantity: {product.quantity}")
+
+# Sample usage of the Mart class
+if __name__ == "__main__":
+    mart = Mart()
+
+    # Adding products
+    product1 = Product("Apple", 1.25, 50)
+    product2 = Product("Banana", 0.75, 100)
+    product3 = Product("Orange", 1.00, 75)
+
+    mart.add_product(product1)
+    mart.add_product(product2)
+    mart.add_product(product3)
+
+    # Viewing products
+    mart.view_products()
+
+    # Removing a product
+    mart.remove_product("Banana")
+
+    # Viewing products after removal
+    mart.view_products()
+''
